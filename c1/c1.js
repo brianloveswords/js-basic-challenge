@@ -1,4 +1,8 @@
 (function(){
+  var checkbox = document.getElementById('subscribe');
+  var emailpara = document.getElementById('emailpara');
+  
+  /* crossbrowser way of attaching events */
   var addEvent = function(elem, type, listener) {
     if ( elem.addEventListener ) {
       elem.addEventListener( type, listener, false );
@@ -6,11 +10,11 @@
       elem.attachEvent( "on" + type, listener );
     }
   };
+  
   var toggleEmail = function() {
-    alert('yes I am being called');     
+    var state = {'true': 'block', 'false': 'none'}
+    emailpara.style.display = state[this.checked];
   };
   
-  var checkbox = document.getElementById('subscribe');
-
   addEvent(checkbox, 'click', toggleEmail);
 })()
