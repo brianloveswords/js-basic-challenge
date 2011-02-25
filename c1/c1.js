@@ -1,3 +1,4 @@
+/* immediately invoked function expression -- don't pollute global scope */
 (function(){
   var checkbox = document.getElementById('subscribe');
   var emailpara = document.getElementById('emailpara');
@@ -16,5 +17,10 @@
     emailpara.style.display = state[this.checked];
   };
   
+  var hideEmailPara = function(){
+    emailpara.style.display = 'none';
+  };
+  
   addEvent(checkbox, 'click', toggleEmail);
+  addEvent(window, 'load', hideEmailPara);
 })()
